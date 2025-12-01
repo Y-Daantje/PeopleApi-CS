@@ -1,0 +1,6 @@
+@PeopleApi_HostAddress = http://localhost:5151
+
+GET {{PeopleApi_HostAddress}}/marvel/
+Accept: application/json
+
+###
