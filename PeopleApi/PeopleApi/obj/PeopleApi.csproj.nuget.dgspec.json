@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yannick\\Desktop\\PeopleApi\\PeopleApi\\PeopleApi.csproj": {}
+    "C:\\Users\\yannick\\Documents\\GitHub\\PeopleApi-CS\\PeopleApi\\PeopleApi\\PeopleApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yannick\\Desktop\\PeopleApi\\PeopleApi\\PeopleApi.csproj": {
+    "C:\\Users\\yannick\\Documents\\GitHub\\PeopleApi-CS\\PeopleApi\\PeopleApi\\PeopleApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yannick\\Desktop\\PeopleApi\\PeopleApi\\PeopleApi.csproj",
+        "projectUniqueName": "C:\\Users\\yannick\\Documents\\GitHub\\PeopleApi-CS\\PeopleApi\\PeopleApi\\PeopleApi.csproj",
         "projectName": "PeopleApi",
-        "projectPath": "C:\\Users\\yannick\\Desktop\\PeopleApi\\PeopleApi\\PeopleApi.csproj",
+        "projectPath": "C:\\Users\\yannick\\Documents\\GitHub\\PeopleApi-CS\\PeopleApi\\PeopleApi\\PeopleApi.csproj",
         "packagesPath": "C:\\Users\\yannick\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yannick\\Desktop\\PeopleApi\\PeopleApi\\obj\\",
+        "outputPath": "C:\\Users\\yannick\\Documents\\GitHub\\PeopleApi-CS\\PeopleApi\\PeopleApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\yannick\\AppData\\Roaming\\NuGet\\NuGet.Config"

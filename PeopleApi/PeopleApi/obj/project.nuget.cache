@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UJfQ+efTavk=",
+  "dgSpecHash": "K+nOAj+Ns78=",
   "success": true,
-  "projectFilePath": "C:\\Users\\yannick\\Desktop\\PeopleApi\\PeopleApi\\PeopleApi.csproj",
+  "projectFilePath": "C:\\Users\\yannick\\Documents\\GitHub\\PeopleApi-CS\\PeopleApi\\PeopleApi\\PeopleApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yannick\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.11\\microsoft.aspnetcore.openapi.9.0.11.nupkg.sha512",
     "C:\\Users\\yannick\\.nuget\\packages\\microsoft.extensions.apidescription.server\\9.0.0\\microsoft.extensions.apidescription.server.9.0.0.nupkg.sha512",
