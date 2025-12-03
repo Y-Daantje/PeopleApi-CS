@@ -1,110 +1,14 @@
 [
     {
-        "Id": 1,
-        "Name": "Spider-Man",
-        "Role": "Duelist",
-        "Description": "Swinging around the arena on his signature weblines, your friendly neighborhood Spider-Man, AKA Peter Parker, catches his rivals by surprise with sneaky, sticky bursts of webbing and unexpected attacks from above. Look out… here comes the Spider-Man!"
-    },
-    {
-        "Id": 2,
+        "Id": "337f28f7-833c-4e9c-b223-460af688d0ce",
         "Name": "Iron Man",
         "Role": "Damage",
         "Description": "Armed with superior intellect and a nanotech battlesuit of his own design, Tony Stark stands alongside gods as the Invincible Iron Man. His state of the art armor turns any battlefield into his personal playground, allowing him to steal the spotlight he so desperately desires."
     },
     {
-        "Id": 3,
-        "Name": "Loki",
-        "Role": "Support",
-        "Description": "What greater thrill is there for a God of Mischief than to outsmart his foes? The cunning trickster Loki uses his illusions and shapeshifting abilities to weave in and out of combat, toying with enemies at every turn."
-    },
-    {
-        "Id": 4,
-        "Name": "Magneto",
-        "Role": "Damage",
-        "Description": "The Master of Magnetism bends even the strongest metal to his whims, shielding his allies and striking at his foes. Whether he calls himself Max Eisenhardt, Erik Lehnsherr, or simply Magneto, the hardships this warrior has endured have made him as unbreakable as the steel he brandishes."
-    },
-    {
-        "Id": 5,
+        "Id": "328028d3-64e4-49ff-aee0-2d510725c08a",
         "Name": "Hela",
-        "Role": "Support",
+        "Role": "Damage",
         "Description": "As the Goddess of Death, Hela wields supreme control over the fallen souls residing in Hel. With a haunting whisper and a murder of crows, the queen of the underworld gracefully reaps the souls of her enemies without an ounce of mercy."
-    },
-    {
-        "Id": 6,
-        "Name": "Doctor Strange",
-        "Role": "Support",
-        "Description": "As the Sorcerer Supreme, Doctor Stephen Strange gracefully wields ancient spells to turn the tide of even the most impossible battle. However, magic always comes at a cost, and each use of his arcane abilities gradually awakens the darkness within him."
-    },
-    {
-        "Id": 7,
-        "Name": "Black Panther",
-        "Role": "Duelist",
-        "Description": "T'Challa, King of Wakanda, wields the perfect blend of the cutting-edge Vibranium technology and ancestral power drawn from the Panther God, Bast. The Black Panther bides his time until elegantly infiltrating enemy lines and commencing his hunt."
-    },
-    {
-        "Id": 8,
-        "Name": "Star-Lord",
-        "Role": "Damage",
-        "Description": "Peter Quill lives to dazzle his foes on the battlefield with his signature swagger. As his element guns paint arcs of devastation, his acrobatic moves sail through the sky with unrivaled style. With performances this spectacular, it's no wonder that Star-Lord is so legendary!"
-    },
-    {
-        "Id": 9,
-        "Name": "Rocket Raccoon",
-        "Role": "Damage",
-        "Description": "Rocket may not look like a tech genius or an expert tactician, but anyone who's ever made his hit list has quickly regretted underestimating him. This savvy space soldier is equally eager to boost his teammates and to collect bounties on his foes."
-    },
-    {
-        "Id": 10,
-        "Name": "Groot",
-        "Role": "Tank",
-        "Description": "A flora colossus from Planet X, the alien known as Groot exhibits enhanced vitality and the ability to manipulate all forms of vegetation. As sturdy as a towering tree, Groot forges his own way, serving as the team's silent but reliable pathfinder."
-    },
-    {
-        "Id": 11,
-        "Name": "Thor",
-        "Role": "Damage",
-        "Description": "Brilliant scientist Dr. Bruce Banner has finally found a way to coexist with his monstrous alter ego, the Hulk. By accumulating gamma energy over multiple transformations, he can become a wise and strong Hero Hulk or a fierce and destructive Monster Hulk – a true force of fury on the battlefield!"
-    },
-    {
-        "Id": 12,
-        "Name": "Hulk",
-        "Role": "Tank",
-        "Description": "Brilliant scientist Dr. Bruce Banner has finally found a way to coexist with his monstrous alter ego, the Hulk. By accumulating gamma energy over multiple transformations, he can become a wise and strong Hero Hulk or a fierce and destructive Monster Hulk – a true force of fury on the battlefield!"
-    },
-    {
-        "Id": 13,
-        "Name": "Black Widow",
-        "Role": "Duelist",
-        "Description": "Natasha Romanova is the world's most elite spy in any era. Her mastery of the sniper rifle eliminates targets from afar, while her shock batons neutralize close-range threats. Black Widow is locked, loaded, and ready to deliver a fatal bite!"
-    },
-    {
-        "Id": 15,
-        "Name": "Wolverine",
-        "Role": "Duelist",
-        "Description": "Thanks to his regenerative healing factor and berserker rage, the centuries-old Logan can fight through the worst pain to go claw-to-claw with any foe. The Wolverine stands ready to shred through all obstacles in his way with his Adamantium claws."
-    },
-    {
-        "Id": 16,
-        "Name": "Storm",
-        "Role": "Support",
-        "Description": "An Omega-level Mutant ability to manipulate weather patterns makes Ororo Munroe a force to be reckoned with. Rain or shine, thunder or lightning, nature itself bends to the command of the Goddess of the Storm!"
-    },
-    {
-        "Id": 17,
-        "Name": "Scarlet Witch",
-        "Role": "Support",
-        "Description": "Wanda Maximoff is adept at harnessing formidable chaos magic, casting hexes with the power to twist and reshape reality itself. Energy, space, and matter are mere playthings in the hands of Scarlet Witch!"
-    },
-    {
-        "Id": 18,
-        "Name": "Venom",
-        "Role": "Tank",
-        "Description": "Using his symbiote-enhanced body as the perfect living weapon, Eddie Brock and his alien ally stand ever-ready to unleash vicious attacks upon anyone he deems an enemy. Those ensnared by Venom's tentacles have no choice but to surrender to this insatiable predator."
-    },
-    {
-        "Id": 20,
-        "Name": "Captain America",
-        "Role": "Tank",
-        "Description": "Enhanced by the Super-Soldier Serum, Steven `Steve` Rogers uses his Vibranium shield and extensive combat training to confront any threat to justice. When Captain America rallies his troops, a wave of courage sweeps across the battlefield!"
     }
 ]

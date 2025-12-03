@@ -32,6 +32,7 @@ app.MapPost("/newcharacter", (NewMarverlCharacter input) =>
     // Create a new character with sample data
     var newCharacter = new MarvelCharacter
     {
+        //input from the request body
         Id = Guid.NewGuid(),
         Name = input.Name,
         Role = input.Role,
@@ -43,6 +44,25 @@ app.MapPost("/newcharacter", (NewMarverlCharacter input) =>
     // Return the created character with a 201 status code
     // (.Created method makes the 201 status code)
     return Results.Created($"/marvelcharacter/{newCharacter.Id}", newCharacter);
+});
+
+app.MapDelete("/deletecharacter/{name}", (string name) =>
+{
+    // Load existing characters
+    var characters = LoadMarvelCharacters();
+
+    // Find the character to delete
+    var characterToDelete = characters.FirstOrDefault(c => c.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+    if (characterToDelete == null)
+    {
+        return Results.NotFound("Character not found.");
+    }
+
+    // Remove the character from the list
+    characters.Remove(characterToDelete);
+    SaveMarvelCharacters(characters);
+    // Return a 204 No Content response no body
+    return Results.NoContent();
 });
 
 
@@ -71,9 +91,9 @@ void SaveMarvelCharacters(List<MarvelCharacter> characters)
 {
     var filePath = "marvel.json";
 
-    var options = new JsonSerializerOptions();
+    var format = new JsonSerializerOptions { WriteIndented = true };
 
-    var json = JsonSerializer.Serialize(characters, options);
+    var json = JsonSerializer.Serialize(characters, format);
     File.WriteAllText(filePath, json);
 }
 
@@ -88,7 +108,6 @@ public class MarvelCharacter
     public string Role { get; set; }
     public string Description { get; set; }
 }
-
 public class NewMarverlCharacter
 {
     public string Name { get; set; }
