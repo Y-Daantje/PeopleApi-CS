@@ -24,11 +24,25 @@ app.MapGet("/listmarvelcharacters", () =>
     return Results.Ok(characters);
 });
 
-app.MapPost("/newcharacter", () =>
+app.MapPost("/newcharacter", (NewMarverlCharacter input) =>
 {
+    // Load existing characters
     var characters = LoadMarvelCharacters();
 
-    var nextId =  
+    // Create a new character with sample data
+    var newCharacter = new MarvelCharacter
+    {
+        Id = Guid.NewGuid(),
+        Name = input.Name,
+        Role = input.Role,
+        Description = input.Description
+    };
+    // Add the new character to the list
+    characters.Add(newCharacter);
+    SaveMarvelCharacters(characters);
+    // Return the created character with a 201 status code
+    // (.Created method makes the 201 status code)
+    return Results.Created($"/marvelcharacter/{newCharacter.Id}", newCharacter);
 });
 
 
