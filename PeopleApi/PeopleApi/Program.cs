@@ -52,6 +52,8 @@ app.MapDelete("/deletecharacter/{name}", (string name) =>
     var characters = LoadMarvelCharacters();
 
     // Find the character to delete
+    // FirstOrDefault returns the first matching element or null if none found
+    // StringComparison.OrdinalIgnoreCase makes the comparison case-insensitive (Lambda expression)
     var characterToDelete = characters.FirstOrDefault(c => c.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
     if (characterToDelete == null)
     {
