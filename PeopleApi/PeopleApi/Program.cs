@@ -41,28 +41,70 @@ app.MapPost("/newcharacter", (NewMarverlCharacter input) =>
     // Add the new character to the list
     characters.Add(newCharacter);
     SaveMarvelCharacters(characters);
-    // Return the created character with a 201 status code
-    // (.Created method makes the 201 status code)
+    // Return the created character with a 201 status code.
+    // (.Created method makes the 201 status code) --> input successful and return the created resource.
     return Results.Created($"/marvelcharacter/{newCharacter.Id}", newCharacter);
 });
+
+
+
+
+
+app.MapPatch("/updatecharacter/{name}", (string name, UpdateMarvelCharacter updatedData) =>
+{
+    // Load existing characters.
+    var characters = LoadMarvelCharacters();
+
+    // Find the character to update.
+    //characterToUpdate.Role → the old value in the JSON file.
+    var characterToUpdate = characters.FirstOrDefault(c => c.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+    if (characterToUpdate == null)
+    {
+        return Results.NotFound("Character not found.");
+    }
+
+    // Update the character's details.
+    // If the updatedData properties are null, keep the existing values.
+    // If the user provides a new value, update it if not keep the old one.
+    characterToUpdate.Name = updatedData.Name ?? characterToUpdate.Name;
+    characterToUpdate.Role = updatedData.Role ?? characterToUpdate.Role;
+    characterToUpdate.Description = updatedData.Description ?? characterToUpdate.Description;
+
+    // Save the updated list back to the JSON file.
+    SaveMarvelCharacters(characters);
+
+    // Return the updated character.
+    return Results.Ok(characterToUpdate);
+});
+
+
+
 
 app.MapDelete("/deletecharacter/{name}", (string name) =>
 {
     // Load existing characters
     var characters = LoadMarvelCharacters();
 
+
+    // StringComparison.OrdinalIgnoreCase makes the comparison case-insensitive (Lambda expression)
     // Find the character to delete
     // FirstOrDefault returns the first matching element or null if none found
-    // StringComparison.OrdinalIgnoreCase makes the comparison case-insensitive (Lambda expression)
     var characterToDelete = characters.FirstOrDefault(c => c.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
     if (characterToDelete == null)
     {
         return Results.NotFound("Character not found.");
     }
 
+    //Load → Save → Delete → (but delete is never saved!) --> wrong order if you flip it.
+
     // Remove the character from the list
     characters.Remove(characterToDelete);
+
+    // this line need to come after removing the character because we need to remover first then save it to the list.
+    // Save the updated list back to the JSON file.
+    // Load → Delete → Save → Return 204 (exmaple).
     SaveMarvelCharacters(characters);
+
     // Return a 204 No Content response no body
     return Results.NoContent();
 });
@@ -109,6 +151,13 @@ public class MarvelCharacter
     public string Name { get; set; }
     public string Role { get; set; }
     public string Description { get; set; }
+}
+
+public class UpdateMarvelCharacter
+{
+    public string? Name { get; set; }
+    public string? Role { get; set; }
+    public string? Description { get; set; }
 }
 public class NewMarverlCharacter
 {

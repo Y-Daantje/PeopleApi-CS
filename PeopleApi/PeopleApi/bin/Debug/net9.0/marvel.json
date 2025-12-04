@@ -1,44 +1,26 @@
 [
-  {
-    "Id": "337f28f7-833c-4e9c-b223-460af688d0ce",
-    "Name": "Iron Man",
-    "Role": "Damage",
-    "Description": "Armed with superior intellect and a nanotech battlesuit of his own design, Tony Stark stands alongside gods as the Invincible Iron Man. His state of the art armor turns any battlefield into his personal playground, allowing him to steal the spotlight he so desperately desires."
-  },
-  {
-    "Id": "c759ffdc-d853-4f8c-97f3-4cd5cb843d46",
-    "Name": "Loki",
-    "Role": "Support",
-    "Description": "What greater thrill is there for a God of Mischief than to outsmart his foes? The cunning trickster Loki uses his illusions and shapeshifting abilities to weave in and out of combat, toying with enemies at every turn."
-  },
-  {
-    "Id": "413d3b21-2982-44ef-939f-1a729ff20635",
-    "Name": "string",
-    "Role": "string",
-    "Description": "string"
-  },
-  {
-    "Id": "c6abc1e6-d04c-4f94-b8af-8c423a6c6cf8",
-    "Name": "string",
-    "Role": "string",
-    "Description": "string"
-  },
-  {
-    "Id": "58bd64c0-c6f9-461a-9141-266696becad1",
-    "Name": "string",
-    "Role": "string",
-    "Description": "string"
-  },
-  {
-    "Id": "e2961148-f53b-4307-90c5-83d986f30bdf",
-    "Name": "string",
-    "Role": "string",
-    "Description": "string"
-  },
-  {
-    "Id": "d51fa0c6-ab43-48c8-a8d2-e052638b8fa7",
-    "Name": "string",
-    "Role": "string",
-    "Description": "string"
-  }
+    {
+        "Id": "337f28f7-833c-4e9c-b223-460af688d0ce",
+        "Name": "Iron Man",
+        "Role": "Damage",
+        "Description": "Armed with superior intellect and a nanotech battlesuit of his own design, Tony Stark stands alongside gods as the Invincible Iron Man. His state of the art armor turns any battlefield into his personal playground, allowing him to steal the spotlight he so desperately desires."
+    },
+    {
+        "Id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+        "Name": "Captain America",
+        "Role": "Tank",
+        "Description": "Enhanced to the peak of human physicality by an experimental serum, Steve Rogers embodies the spirit of freedom as Captain America. Wielding his iconic vibranium shield, he leads the charge against tyranny and injustice with unwavering resolve."
+    },
+    {
+        "Id": "123e4567-e89b-12d3-a456-426614174000",
+        "Name": "Thor",
+        "Role": "Damage",
+        "Description": "As the God of Thunder, Thor wields the enchanted hammer Mjolnir, channeling the raw power of storms to vanquish his foes. With a mighty roar and a flash of lightning, he descends upon the battlefield, bringing divine wrath to those who threaten the realms."
+    },
+    {
+        "Id": "328028d3-64e4-49ff-aee0-2d510725c08a",
+        "Name": "Hela",
+        "Role": "Damage",
+        "Description": "As the Goddess of Death, Hela wields supreme control over the fallen souls residing in Hel. With a haunting whisper and a murder of crows, the queen of the underworld gracefully reaps the souls of her enemies without an ounce of mercy."
+    }
 ]
