@@ -18,6 +18,34 @@ app.UseHttpsRedirection();
 /// <summary>
 /// Gets a list of Marvel characters from a JSON file.
 /// </summary> 
+
+List<MarvelCharacter> LoadMarvelCharacters()
+{
+    var filePath = "marvel.json";
+
+    // Check if the file exists
+    if (!File.Exists(filePath))
+    {
+        // If the file doesn't exist, return an empty list
+        return new List<MarvelCharacter>();
+    }
+    // Read the JSON file content
+    var json = File.ReadAllText(filePath);
+    Console.WriteLine(json);
+
+    // If the file is empty, return an empty list
+    if (string.IsNullOrWhiteSpace(json))
+    {
+        return new List<MarvelCharacter>();
+    }
+
+    // Deserialize the JSON content to a list of MarvelCharacter
+    // If deserialization fails, return an empty list
+    var result = JsonSerializer.Deserialize<List<MarvelCharacter>>(json);
+    return result ?? new List<MarvelCharacter>();
+}
+
+
 app.MapGet("/listmarvelcharacters", () =>
 {
     var characters = LoadMarvelCharacters();
@@ -43,7 +71,7 @@ app.MapPost("/newcharacter", (NewMarverlCharacter input) =>
     SaveMarvelCharacters(characters);
     // Return the created character with a 201 status code.
     // (.Created method makes the 201 status code) --> input successful and return the created resource.
-    return Results.Created($"/marvelcharacter/{newCharacter.Id}", newCharacter);
+    return Results.Created($"/{newCharacter.Id}", newCharacter);
 });
 
 
@@ -110,33 +138,17 @@ app.MapDelete("/deletecharacter/{name}", (string name) =>
 });
 
 
-List<MarvelCharacter> LoadMarvelCharacters()
-{
-    var filePath = "marvel.json";
-
-    if (!File.Exists(filePath))
-    {
-        return new List<MarvelCharacter>();
-    }
-
-    var json = File.ReadAllText(filePath);
-    Console.WriteLine(json);
-    if (string.IsNullOrWhiteSpace(json))
-    {
-        return new List<MarvelCharacter>();
-    }
 
 
-    var result = JsonSerializer.Deserialize<List<MarvelCharacter>>(json);
-    return result ?? new List<MarvelCharacter>();
-}
 
+
+// Save the list of Marvel characters to the JSON file
 void SaveMarvelCharacters(List<MarvelCharacter> characters)
 {
     var filePath = "marvel.json";
-
+    // serialize the list to JSON format for better readability.
     var format = new JsonSerializerOptions { WriteIndented = true };
-
+    // change C# objects to JSON string
     var json = JsonSerializer.Serialize(characters, format);
     File.WriteAllText(filePath, json);
 }
