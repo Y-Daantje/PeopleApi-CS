@@ -1,6 +1,7 @@
 using System.Reflection.PortableExecutable;
 using System.Text.Json;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 internal class Program
 {
     private static void Main(string[] args)
@@ -23,47 +24,82 @@ internal class Program
         // Marvel endpoint
 
 
-        List<MarvelCharacter> LoadMarvelCharacters()
+        // List<MarvelCharacter> LoadMarvelCharacters()
+        // {
+        //     var filePath = "marvel.json";
+
+        //     // Check if the file exists
+        //     if (!File.Exists(filePath))
+        //     {
+        //         // If the file doesn't exist, return an empty list
+        //         return new List<MarvelCharacter>();
+        //     }
+        //     // Read the JSON file content
+        //     var json = File.ReadAllText(filePath);
+        //     Console.WriteLine(json);
+
+
+        //     // If the file is empty, return an empty list
+        //     if (string.IsNullOrWhiteSpace(json))
+        //     {
+        //         return new List<MarvelCharacter>();
+        //     }
+
+        //     // Deserialize the JSON content to a list of MarvelCharacter
+        //     // If deserialization fails, return an empty list
+        //     var result = JsonSerializer.Deserialize<List<MarvelCharacter>>(json);
+
+        //     if (result != null && result.Count > 0) // checks if result is null(if its there) or checks if it has more than one character in the list.
+        //     {
+        //         ChangeCharacterRole(result[1]); // Change the role of the second character as a test
+        //         CheckRole(result[1]);
+        //     }
+        //     return result ?? new List<MarvelCharacter>();
+
+        // }
+
+        //list test
+        List<MarvelCharacter> MarvelCharacters = new List<MarvelCharacter>();
         {
-            var filePath = "marvel.json";
-
-            // Check if the file exists
-            if (!File.Exists(filePath))
+            MarvelCharacters.Add(new MarvelCharacter
             {
-                // If the file doesn't exist, return an empty list
-                return new List<MarvelCharacter>();
-            }
-            // Read the JSON file content
-            var json = File.ReadAllText(filePath);
-            Console.WriteLine(json);
-
-
-            // If the file is empty, return an empty list
-            if (string.IsNullOrWhiteSpace(json))
+                Id = 1,
+                Name = "Iron Man",
+                Role = "Damage",
+                Description = "Armed with superior intellect and a nanotech battlesuit of his own design, Tony Stark stands alongside gods as the Invincible Iron Man. His state of the art armor turns any battlefield into his personal playground, allowing him to steal the spotlight he so desperately desires."
+            });
+            MarvelCharacters.Add(new MarvelCharacter
             {
-                return new List<MarvelCharacter>();
-            }
-
-            var mijnpersonen = new List<string>();
-            mijnpersonen.Add("naam1");
-            mijnpersonen.Add("naam2");
-
-
-            // Deserialize the JSON content to a list of MarvelCharacter
-            // If deserialization fails, return an empty list
-            var result = JsonSerializer.Deserialize<List<MarvelCharacter>>(json);
-
-            if (result != null && result.Count > 0) // checks if result is null(if its there) or checks if it has more than one character in the list.
+                Id = 2,
+                Name = "Captain America",
+                Role = "Tank",
+                Description = "Enhanced to the peak of human physicality by an experimental serum, World War II hero Steve Rogers fights for American ideals as the Avengers' iconic leader, Captain America. Armed with his indestructible shield and unyielding spirit, he stands as a symbol of freedom and justice."
+            });
+            MarvelCharacters.Add(new MarvelCharacter
             {
-                ChangeCharacterRole(result[1]); // Change the role of the second character as a test
-                CheckRole(result[1]);
-            }
-            return result ?? new List<MarvelCharacter>();
+                Id = 3,
+                Name = "Thor",
+                Role = "Bruiser",
+                Description = "As the Norse God of Thunder, Thor wields the enchanted hammer Mjolnir to protect both Asgard and Earth. With his godly strength, weather manipulation, and indomitable spirit, Thor stands as a mighty warrior and a key member of the Avengers."
+            });
+            Console.WriteLine();
 
+            foreach (var character in MarvelCharacters)
+            {
+                Console.WriteLine($"Character: {character.Name}, Role: {character.Role}");
+            }
+            
+            Console.WriteLine();
         }
 
-        var marvelCharacters = new List<string>();
-        marvelCharacters.Add("marvel.json");
+        ///
+        // app.MapGet("/listmarvelcharacters", () =>
+        // {
+        //     var characters = LoadMarvelCharacters();
+
+        //     return Results.Ok(characters);
+        // });
+
 
 
         void ChangeCharacterRole(MarvelCharacter character)
@@ -83,116 +119,8 @@ internal class Program
             {
                 Console.WriteLine("Role is unchanged.");
             }
+
         }
-
-
-        app.MapGet("/listmarvelcharacters", () =>
-        {
-            var characters = LoadMarvelCharacters();
-
-            return Results.Ok(characters);
-        });
-
-
-        // app.MapPost("/newcharacter", (NewMarverlCharacter input) =>
-        // {
-        //     // Load existing characters
-        //     var characters = LoadMarvelCharacters();
-
-        //     // Create a new character with sample data
-        //     var newCharacter = new MarvelCharacter
-        //     {
-        //         //input from the request body
-        //         Id = Guid.NewGuid(),
-        //         Name = input.Name,
-        //         Role = input.Role,
-        //         Description = input.Description
-        //     };
-        //     // Add the new character to the list
-        //     characters.Add(newCharacter);
-
-        //     SaveMarvelCharacters(characters);
-        //     // Return the created character with a 201 status code.
-        //     // (.Created method makes the 201 status code) --> input successful and return the created resource.
-        //     return Results.Created($"/{newCharacter.Id}", newCharacter);
-        // });
-
-
-
-        // app.MapPatch("/updatecharacter/", (string name, UpdateMarvelCharacter updatedData) =>
-        // {
-        //     // Load existing characters.
-        //     var characters = LoadMarvelCharacters();
-
-        //     // Find the character to update.
-        //     //characterToUpdate.Role → the old value in the JSON file.
-        //     var characterToUpdate = characters.FirstOrDefault(c => c.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
-        //     if (characterToUpdate == null)
-        //     {
-        //         return Results.NotFound("Character not found.");
-        //     }
-
-        //     // Update the character's details.
-        //     // If the updatedData properties are null, keep the existing values.
-        //     // If the user provides a new value, update it if not keep the old one.
-        //     characterToUpdate.Name = updatedData.Name ?? characterToUpdate.Name;
-        //     characterToUpdate.Role = updatedData.Role ?? characterToUpdate.Role;
-        //     characterToUpdate.Description = updatedData.Description ?? characterToUpdate.Description;
-
-        //     // Save the updated list back to the JSON file.
-        //     SaveMarvelCharacters(characters);
-
-        //     // Return the updated character.
-        //     return Results.Ok(characterToUpdate);
-        // });
-
-
-
-        // app.MapDelete("/deletecharacter/", (string name) =>
-        // {
-        //     // Load existing characters
-        //     var characters = LoadMarvelCharacters();
-
-
-        //     // StringComparison.OrdinalIgnoreCase makes the comparison case-insensitive (Lambda expression)
-        //     // Find the character to delete
-        //     // FirstOrDefault returns the first matching element or null if none found
-        //     var characterToDelete = characters.FirstOrDefault(c => c.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
-        //     if (characterToDelete == null)
-        //     {
-        //         return Results.NotFound("Character not found.");
-        //     }
-
-        //     //Load → Save → Delete → (but delete is never saved!) --> wrong order if you flip it.
-
-        //     // Remove the character from the list
-        //     characters.Remove(characterToDelete);
-
-        //     // this line need to come after removing the character because we need to remover first then save it to the list.
-        //     // Save the updated list back to the JSON file.
-        //     // Load → Delete → Save → Return 204 (exmaple).
-        //     SaveMarvelCharacters(characters);
-
-        //     // Return a 204 No Content response no body
-        //     return Results.NoContent();
-        // });
-
-
-
-
-
-
-        // Save the list of Marvel characters to the JSON file
-        // void SaveMarvelCharacters(List<MarvelCharacter> characters)
-        // {
-        //     var filePath = "marvel.json";
-        //     // serialize the list to JSON format for better readability.
-        //     var format = new JsonSerializerOptions { WriteIndented = true };
-        //     // change C# objects to JSON string
-        //     var json = JsonSerializer.Serialize(characters, format);
-        //     File.WriteAllText(filePath, json);
-        // }
-
 
         app.Run();
     }
