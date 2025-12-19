@@ -24,39 +24,6 @@ internal class Program
         // Marvel endpoint
 
 
-        // List<MarvelCharacter> LoadMarvelCharacters()
-        // {
-        //     var filePath = "marvel.json";
-
-        //     // Check if the file exists
-        //     if (!File.Exists(filePath))
-        //     {
-        //         // If the file doesn't exist, return an empty list
-        //         return new List<MarvelCharacter>();
-        //     }
-        //     // Read the JSON file content
-        //     var json = File.ReadAllText(filePath);
-        //     Console.WriteLine(json);
-
-
-        //     // If the file is empty, return an empty list
-        //     if (string.IsNullOrWhiteSpace(json))
-        //     {
-        //         return new List<MarvelCharacter>();
-        //     }
-
-        //     // Deserialize the JSON content to a list of MarvelCharacter
-        //     // If deserialization fails, return an empty list
-        //     var result = JsonSerializer.Deserialize<List<MarvelCharacter>>(json);
-
-        //     if (result != null && result.Count > 0) // checks if result is null(if its there) or checks if it has more than one character in the list.
-        //     {
-        //         ChangeCharacterRole(result[1]); // Change the role of the second character as a test
-        //         CheckRole(result[1]);
-        //     }
-        //     return result ?? new List<MarvelCharacter>();
-
-        // }
 
         //list test
         List<MarvelCharacter> MarvelCharacters = new List<MarvelCharacter>();
@@ -88,24 +55,32 @@ internal class Program
             {
                 Console.WriteLine($"Character: {character.Name}, Role: {character.Role}");
             }
-            
+
+            if (MarvelCharacters.Count > 0)
+            {
+                ChangeCharacterRole(MarvelCharacters[0]); // Change the role of the first character as a test
+                CheckRole(MarvelCharacters[0]);
+            }
+
+
             Console.WriteLine();
         }
 
-        ///
-        // app.MapGet("/listmarvelcharacters", () =>
-        // {
-        //     var characters = LoadMarvelCharacters();
 
-        //     return Results.Ok(characters);
-        // });
+        app.MapGet("/listmarvelcharacters", () =>
+        {
+            Console.WriteLine(MarvelCharacters[0].Name);
+            Console.WriteLine(MarvelCharacters[0].Role);
+            // get Marvel characters from the list and not from JSON file
+            return Results.Ok(MarvelCharacters);
+        });
 
 
 
         void ChangeCharacterRole(MarvelCharacter character)
         {
             character.Role = "test";
-            Console.WriteLine(character.Name);// Output: name
+            Console.WriteLine($"Character: {MarvelCharacters[0].Name}, Role: {MarvelCharacters[0].Role}"); // Output: name
             Console.WriteLine(character.Role); // Output: test
         }
 
