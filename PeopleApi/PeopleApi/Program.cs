@@ -21,10 +21,6 @@ internal class Program
         app.UseHttpsRedirection();
 
 
-        // Marvel endpoint
-
-
-
         //list test
         List<MarvelCharacter> MarvelCharacters = new List<MarvelCharacter>();
         {
@@ -69,10 +65,21 @@ internal class Program
 
         app.MapGet("/listmarvelcharacters", () =>
         {
-            Console.WriteLine(MarvelCharacters[0].Name);
-            Console.WriteLine(MarvelCharacters[0].Role);
             // get Marvel characters from the list and not from JSON file
             return Results.Ok(MarvelCharacters);
+        });
+
+        app.MapDelete("/deletemarvelcharacter/{id}", (int id) =>
+        {
+
+            var character = MarvelCharacters.Find(m => m.Id == id);
+            if (character == null)
+            {
+                return Results.NotFound($"Marvel character with ID {id} not found.");
+            }
+            MarvelCharacters.Remove(character);
+            return Results.Ok($"Marvel character with ID {id} has been deleted.");
+
         });
 
 
@@ -110,12 +117,12 @@ public class MarvelCharacter
     public string Description { get; set; }
 }
 
-// public class UpdateMarvelCharacter
-// {
-//     public string? Name { get; set; }
-//     public string? Role { get; set; }
-//     public string? Description { get; set; }
-// }
+public class UpdateMarvelCharacter
+{
+    public string? Name { get; set; }
+    public string? Role { get; set; }
+    public string? Description { get; set; }
+}
 // public class NewMarverlCharacter
 // {
 //     public string Name { get; set; }
