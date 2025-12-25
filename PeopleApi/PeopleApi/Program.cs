@@ -20,10 +20,10 @@ internal class Program
 
         app.UseHttpsRedirection();
 
-
-        //list test
+        //simple list Marvel characters
         List<MarvelCharacter> MarvelCharacters = new List<MarvelCharacter>();
         {
+            //add marvel character using the .add method "not from JSON file "(with the MavelCharacter type defined below)
             MarvelCharacters.Add(new MarvelCharacter
             {
                 Id = 1,
@@ -47,11 +47,12 @@ internal class Program
             });
             Console.WriteLine();
 
+            //print all marvel characters from the list
             foreach (var character in MarvelCharacters)
             {
                 Console.WriteLine($"Character: {character.Name}, Role: {character.Role}");
             }
-
+            //change role based on its id and verify the change
             if (MarvelCharacters.Count > 0)
             {
                 ChangeCharacterRole(MarvelCharacters[0]); // Change the role of the first character as a test
@@ -69,7 +70,7 @@ internal class Program
             return Results.Ok(MarvelCharacters);
         });
 
-        app.MapDelete("/deletemarvelcharacter/{id}", (int id) =>
+        app.MapDelete("/deletemarvelcharacter", (int id) =>
         {
 
             var character = MarvelCharacters.Find(m => m.Id == id);
@@ -78,7 +79,9 @@ internal class Program
                 return Results.NotFound($"Marvel character with ID {id} not found.");
             }
             MarvelCharacters.Remove(character);
+            Console.WriteLine($"Character name: {character.Name}, with ID: {id} has been deleted.");
             return Results.Ok($"Marvel character with ID {id} has been deleted.");
+
 
         });
 
@@ -117,15 +120,127 @@ public class MarvelCharacter
     public string Description { get; set; }
 }
 
-public class UpdateMarvelCharacter
-{
-    public string? Name { get; set; }
-    public string? Role { get; set; }
-    public string? Description { get; set; }
-}
+// public class UpdateMarvelCharacter
+// {
+//     public string? Name { get; set; }
+//     public string? Role { get; set; }
+//     public string? Description { get; set; }
+// }
 // public class NewMarverlCharacter
 // {
 //     public string Name { get; set; }
 //     public string Role { get; set; }
 //     public string Description { get; set; }
 // }
+
+public class Rekenmachine
+{
+    // Variabele om het resultaat op te slaan
+    private double resultaat;
+
+    // Optellen
+    public void optellen(double a, double b)
+    {
+        resultaat = a + b;
+        System.out.println("Resultaat: " + resultaat);
+    }
+
+    // Aftrekken
+    public void aftrekken(double a, double b)
+    {
+        resultaat = a - b;
+        System.out.println("Resultaat: " + resultaat);
+    }
+
+    // Vermenigvuldigen
+    public void vermenigvuldigen(double a, double b)
+    {
+        resultaat = a * b;
+        System.out.println("Resultaat: " + resultaat);
+    }
+
+    // Getter voor het resultaat
+    public double getResultaat()
+    {
+        return resultaat;
+    }
+
+    // Testen van de rekenmachine
+    public static void main(String[] args)
+    {
+        Rekenmachine r = new Rekenmachine();
+
+        r.optellen(5, 3);        // Resultaat: 8.0
+        r.aftrekken(10, 4);      // Resultaat: 6.0
+        r.vermenigvuldigen(6, 7); // Resultaat: 42.0
+
+        // Toegang tot het opgeslagen resultaat
+        System.out.println("Laatste resultaat opgeslagen in de class: " + r.getResultaat());
+    }
+}
+
+public class Rekenmachine
+{
+    // Huidig resultaat
+    private double resultaat;
+
+    // Constructor: start met 0
+    public Rekenmachine()
+    {
+        resultaat = 0;
+    }
+
+    // Optellen bij huidig resultaat
+    public void optellen(double getal)
+    {
+        resultaat += getal;
+        System.out.println("Resultaat: " + resultaat);
+    }
+
+    // Aftrekken van huidig resultaat
+    public void aftrekken(double getal)
+    {
+        resultaat -= getal;
+        System.out.println("Resultaat: " + resultaat);
+    }
+
+    // Vermenigvuldigen met huidig resultaat
+    public void vermenigvuldigen(double getal)
+    {
+        resultaat *= getal;
+        System.out.println("Resultaat: " + resultaat);
+    }
+
+    // Delen door huidig resultaat
+    public void delen(double getal)
+    {
+        if (getal != 0)
+        {
+            resultaat /= getal;
+            System.out.println("Resultaat: " + resultaat);
+        }
+        else
+        {
+            System.out.println("Fout: deling door nul!");
+        }
+    }
+
+    // Haal huidig resultaat op
+    public double getResultaat()
+    {
+        return resultaat;
+    }
+
+    // Testen
+    public static void main(String[] args)
+    {
+        Rekenmachine r = new Rekenmachine();
+
+        r.optellen(5);        // 0 + 5 = 5
+        r.aftrekken(2);       // 5 - 2 = 3
+        r.vermenigvuldigen(4); // 3 * 4 = 12
+        r.delen(3);           // 12 / 3 = 4
+
+        System.out.println("Laatste resultaat opgeslagen: " + r.getResultaat()); // 4
+    }
+}
