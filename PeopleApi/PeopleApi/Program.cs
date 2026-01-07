@@ -48,7 +48,7 @@ internal class Program
             Console.WriteLine();
 
             //print all marvel characters from the list
-            foreach (var character in MarvelCharacters)
+            foreach (MarvelCharacter character in MarvelCharacters)
             {
                 Console.WriteLine($"Character: {character.Name}, Role: {character.Role}");
             }
@@ -62,6 +62,8 @@ internal class Program
 
             Console.WriteLine();
         }
+
+     
 
 
         app.MapGet("/listmarvelcharacters", () =>
@@ -112,7 +114,7 @@ internal class Program
 }
 
 // Models
-public class MarvelCharacter
+class MarvelCharacter
 {
     public int Id { get; set; }
     public string Name { get; set; }
@@ -120,15 +122,7 @@ public class MarvelCharacter
     public string Description { get; set; }
 }
 
-// public class UpdateMarvelCharacter
-// {
-//     public string? Name { get; set; }
-//     public string? Role { get; set; }
-//     public string? Description { get; set; }
-// }
-// public class NewMarverlCharacter
-// {
-//     public string Name { get; set; }
-//     public string Role { get; set; }
-//     public string Description { get; set; }
-// }
+   interface IMarvel
+        {
+            
+        }
