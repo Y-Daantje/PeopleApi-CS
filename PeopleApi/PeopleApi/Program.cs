@@ -23,7 +23,7 @@ internal class Program
         //simple list Marvel characters
         List<MarvelCharacter> MarvelCharacters = new List<MarvelCharacter>();
         {
-            //add marvel character using the .add method "not from JSON file "(with the MavelCharacter type defined below)
+            //add marvel character using the .add method "not from JSON file"with the MavelCharacter type defined below
             MarvelCharacters.Add(new MarvelCharacter
             {
                 Id = 1,
@@ -50,7 +50,7 @@ internal class Program
             //print all marvel characters from the list
             foreach (MarvelCharacter character in MarvelCharacters)
             {
-                Console.WriteLine($"Character: {character.Name}, Role: {character.Role}");
+                Console.WriteLine($"Character: {character.Name},|| Role: {character.Role}");
             }
             //change role based on its id and verify the change
             if (MarvelCharacters.Count > 0)
@@ -63,13 +63,20 @@ internal class Program
             Console.WriteLine();
         }
 
-     
+
 
 
         app.MapGet("/listmarvelcharacters", () =>
         {
             // get Marvel characters from the list and not from JSON file
             return Results.Ok(MarvelCharacters);
+        });
+
+        app.MapPost("/addMarvelcharacter/", (MarvelCharacter character) =>
+        {
+            //need to use Marvalcharacters defined above to add new character to the list
+            MarvelCharacters.Add(character);
+            Console.WriteLine($"New character with name {character.Name}, and ID: {character.Id} has been added.");
         });
 
         app.MapDelete("/deletemarvelcharacter", (int id) =>
@@ -117,12 +124,8 @@ internal class Program
 class MarvelCharacter
 {
     public int Id { get; set; }
-    public string Name { get; set; }
-    public string Role { get; set; }
-    public string Description { get; set; }
+    public string? Name { get; set; }
+    public string? Role { get; set; }
+    public string? Description { get; set; }
 }
 
-   interface IMarvel
-        {
-            
-        }
