@@ -119,16 +119,3 @@ public class MarvelCharacter
     public string Role { get; set; }
     public string Description { get; set; }
 }
-
-// public class UpdateMarvelCharacter
-// {
-//     public string? Name { get; set; }
-//     public string? Role { get; set; }
-//     public string? Description { get; set; }
-// }
-// public class NewMarverlCharacter
-// {
-//     public string Name { get; set; }
-//     public string Role { get; set; }
-//     public string Description { get; set; }
-// }
